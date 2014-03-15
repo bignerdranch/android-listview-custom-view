@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content" >
-  <ImageView
-    android:id="@+id/item_imageView"
-    android:layout_width="60dp"
-    android:layout_height="60dp"
-    android:layout_margin="5dp"
-    android:contentDescription="@string/item_imageView_contentDescription"
-    />
-  <TextView
-    android:id="@+id/item_titleTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_toLeftOf="@id/item_imageView"
-    />
-  <TextView
-    android:id="@+id/item_descriptionTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_toLeftOf="@id/item_imageView"
-    android:layout_below="@id/item_titleTextView"
-    android:layout_marginTop="5dp"
-    />
 
-</merge>
+<com.bignerdranch.android.listitemviewdemo.ItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+    <include layout="@layout/item_view_children"/>
+</com.bignerdranch.android.listitemviewdemo.ItemView>
