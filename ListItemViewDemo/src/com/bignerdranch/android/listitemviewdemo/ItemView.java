@@ -33,12 +33,6 @@ public class ItemView extends RelativeLayout {
         setupChildren();
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        setupChildren();
-    }
-
     private void setupChildren() {
         mTitleTextView = (TextView) findViewById(R.id.item_titleTextView);
         mDescriptionTextView = (TextView) findViewById(R.id.item_descriptionTextView);

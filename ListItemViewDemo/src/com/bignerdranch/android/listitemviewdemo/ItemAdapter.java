@@ -17,7 +17,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ItemView itemView = (ItemView)convertView;
         if (null == itemView)
-            itemView = new ItemView(getContext());
+            itemView = ItemView.inflate(parent);
         itemView.setItem(getItem(position));
         return itemView;
     }
