@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.test.AndroidTestCase;
 import android.view.View;
+import android.widget.ListView;
 
 import com.bignerdranch.android.listitemviewdemo.Item;
 import com.bignerdranch.android.listitemviewdemo.ItemAdapter;
@@ -12,6 +13,7 @@ import com.bignerdranch.android.listitemviewdemo.ItemView;
 public class ItemAdapterTests extends AndroidTestCase {
     private ItemAdapter mAdapter;
     private ArrayList<Item> mItems;
+    private ListView mListView;
     
     @Override
     protected void setUp() throws Exception {
@@ -21,6 +23,7 @@ public class ItemAdapterTests extends AndroidTestCase {
         mItems.add(new Item("url2", "title2", "description2"));
         mItems.add(new Item("url3", "title3", "description3"));
         mAdapter = new ItemAdapter(getContext(), mItems);
+        mListView = new ListView(getContext());
     }
     
     public void testGetItem() {
@@ -37,14 +40,14 @@ public class ItemAdapterTests extends AndroidTestCase {
     public void testGetView() {
         for (int i = 0; i < mItems.size(); i++) {
             Item item = mItems.get(i);
-            ItemView view = (ItemView) mAdapter.getView(i, null, null);
+            ItemView view = (ItemView) mAdapter.getView(i, null, mListView);
             assertEquals(item.getTitle(), view.getTitleTextView().getText());
         }
     }
     
     public void testGetViewRecycling() {
-        View view1 = mAdapter.getView(0, null, null);
-        View view2 = mAdapter.getView(0, view1, null);
+        View view1 = mAdapter.getView(0, null, mListView);
+        View view2 = mAdapter.getView(0, view1, mListView);
         assertSame(view1, view2);
     }
 
