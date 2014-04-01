@@ -23,5 +23,6 @@ local.properties
 proguard/
 
 # Intellij stuff
-.idea/
+.idea/workspace.xml
+.idea/tasks.xml
 out/
