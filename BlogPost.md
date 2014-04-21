@@ -1,6 +1,6 @@
 # Customizing Android ListView Rows by Subclassing
 
-Every Android programmer will at some point customize a `ListView` row by creating their own layout and populating it with data. In this post we compare a common implementation, the "holder" pattern, with subclassing `ViewGroup` to encapsulate the grunt work.
+Every Android programmer will at some point customize a `ListView` row by creating their own layout and populating it with data. When that happens, you'll probably reach for the Holder pattern. But the Holder pattern is clumsy and full of boilerplate, and we can do better. In this post, we explore an alternative that uses a subclass of `RelativeLayout` to encapsulate the customization work.
 
 ---
 
@@ -30,7 +30,7 @@ I don't like this pattern, for several reasons:
 
 * It puts too much responsibility in the `Adapter`'s `getView(...)` method
 * The "holder" class is typically just boilerplate code and creating it/setting it up is a chore
-* The view's tag property requires casting to the correct holder type and is generally kludgy
+* The view's tag property requires casting to the correct holder type, which feels kludgy
 * It violates encapsulation, since the adapter/holder has to know about the internals of the view representing each item in the list
 
 So, rather than complaining about it all the time, I'll propose an alternative: subclassing!
@@ -158,14 +158,12 @@ For convenience, we also provide the `setItem(Item)` method for callers to use t
         // TODO: set up image URL
     }
 
-That's basically all there is to this pattern. It provides several advantages:
+That's about all there is to this pattern. While had to create two layout files (instead of one) and a static convenience method for inflation, look at all the advantages we get for it:
 
 * The `Adapter` implementation is greatly simplified
 * The `ItemView` can be created easily in code or in an XML layout file
 * Any future customizations or configuration-specific changes to the layout of `ItemView` can be handled entirely within that class' implementation and layout files
 * There are no extra "holder" classes or objects created during the process
-
-Arguably, it has a disadvantage as well. The use of two layout files (one for the view and one for its children) slightly complicates the setup. If we just used one layout file containing `ItemView` and its children, we could potentially eliminate this issue, but it would make the implementation of `ItemView`'s constructor depend on the correct layout being inflated to trigger it.
 
 ## Conclusion
 
