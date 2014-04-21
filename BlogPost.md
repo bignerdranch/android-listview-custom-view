@@ -158,7 +158,7 @@ For convenience, we also provide the `setItem(Item)` method for callers to use t
         // TODO: set up image URL
     }
 
-That's about all there is to this pattern. While had to create two layout files (instead of one) and a static convenience method for inflation, look at all the advantages we get for it:
+That's about all there is to this pattern. While we had to create two layout files (instead of one) and a static convenience method for inflation, look at all the advantages we get for it:
 
 * The `Adapter` implementation is greatly simplified
 * The `ItemView` can be created easily in code or in an XML layout file
