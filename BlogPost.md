@@ -165,5 +165,10 @@ That's basically all there is to this pattern. It provides several advantages:
 * Any future customizations or configuration-specific changes to the layout of `ItemView` can be handled entirely within that class' implementation and layout files
 * There are no extra "holder" classes or objects created during the process
 
-Arguably, it has some disadvantages or oddities as well. The use of two layout files (one for the view and one for its children) slightly complicates the setup. If we just used one layout file containing `ItemView` and its children, we could eliminate this issue, but it would make the implementation of `ItemView`'s constructor depend on the correct layout being inflated to trigger it.
+Arguably, it has a disadvantage as well. The use of two layout files (one for the view and one for its children) slightly complicates the setup. If we just used one layout file containing `ItemView` and its children, we could potentially eliminate this issue, but it would make the implementation of `ItemView`'s constructor depend on the correct layout being inflated to trigger it.
 
+## Conclusion
+
+Next time you find yourself reaching for the holder pattern, consider subclassing instead. The encapsulation it offers allows you to freely customize your list row view without your `Adapter` or other code having to worry about the details, and the performance should be equally as good as the holder pattern during view reuse.
+
+If you want to see some examples of alternative ways to implement this functionality, check out [Pavel Dudka's post](http://trickyandroid.com/protip-inflating-layout-for-your-custom-view/) that was linked up in [Android Weekly](http://androidweekly.net/) back in March. I enjoyed reading the discussion of the techniques presented there, but I feel the pattern shown here offers a nice marriage of less code, good performance and easy customization.
